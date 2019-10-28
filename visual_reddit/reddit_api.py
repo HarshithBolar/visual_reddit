@@ -14,7 +14,7 @@ class MyReddit:
             if str(submission.url).endswith(self.valid_image_extensions):
                 post_map[str(submission)] = str(submission.url)
                 image_counter += 1
-            if image_counter > 40:
+            if image_counter >= 40:
                 break
 
         return post_map
