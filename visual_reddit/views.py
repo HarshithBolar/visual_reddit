@@ -4,8 +4,8 @@ from . import reddit_api
 
 reddit_api = reddit_api.MyReddit()
 
-def index(request):
-    image_dict = reddit_api.get_top_40_images()
+def index(request, subreddit='all'):
+    image_dict = reddit_api.get_top_40_images(subreddit)
     template = loader.get_template('visual_reddit/index.html')
 
     context = {
