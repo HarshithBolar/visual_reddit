@@ -1,5 +1,7 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from . import reddit_api
+
+reddit_api = reddit_api.MyReddit()
 
 def index(request):
-    return HttpResponse("Hello from view")
+    return HttpResponse("Display top 40 images from r/all")
