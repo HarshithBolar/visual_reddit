@@ -7,7 +7,7 @@
     <div class="image_grid">
         {% for key, value in image_dict.items %}
             <a href="https://reddit.com/{{ key }}">
-                <img border="0" alt="visual-reddit" src="{{ value }}" width="300" height="300">
+                <img border="0" alt="visual-reddit" src="{{ value.0 }}" width="300" height="300" title="{{ value.1 }}">
             </a>
         {% endfor %}
     </div>
