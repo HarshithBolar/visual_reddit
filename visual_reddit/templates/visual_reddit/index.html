@@ -1,0 +1,14 @@
+{% if image_dict %}
+    <ul>
+    {% for key, value in image_dict.items %}
+        <!--<li>{{key}} - {{value}}</li>-->
+        <li>
+            <a href="https://reddit.com/{{ key }}">
+                <img border="0" alt="visual-reddit" src="{{ value }}" width="400" height="400">
+            </a>
+        </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No images are available.</p>
+{% endif %}
