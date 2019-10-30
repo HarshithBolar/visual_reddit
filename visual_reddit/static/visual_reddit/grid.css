@@ -5,3 +5,13 @@ body {
 .image_grid {
     text-align: center;
 }
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+}
