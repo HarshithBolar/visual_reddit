@@ -1,7 +1,7 @@
 import praw
 
 class MyReddit:
-    valid_image_extensions = ('jpg', 'jpeg', 'png', 'gif')
+    valid_image_extensions = ('jpg', 'jpeg', 'png')
 
     def __init__(self):
         self.reddit = praw.Reddit('visual-reddit', user_agent='visual_reddit_1.0')

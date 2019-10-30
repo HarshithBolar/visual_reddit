@@ -46,7 +46,6 @@ def index(request, subreddit='all'):
         }
     else:
         image_dict = reddit_api.get_top_images(subreddit)
-
         if task_queue.fetch_job(subreddit) is None:
             static_path = f"visual_reddit/static/visual_reddit/images/{subreddit}/"
             if os.path.exists(static_path):

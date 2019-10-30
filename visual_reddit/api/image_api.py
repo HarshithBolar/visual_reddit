@@ -1,9 +1,13 @@
 import requests
 import os
+from PIL import Image
+from io import BytesIO
+
 
 def write_images(subreddit, image_dict):
     image_list = []
-    directory = os.path.dirname(f"visual_reddit/static/visual_reddit/images/{subreddit}/")
+    dirname = f"visual_reddit/static/visual_reddit/images/{subreddit}/"
+    directory = os.path.dirname(dirname)
     if not os.path.exists(directory):
         os.makedirs(directory)
 
@@ -11,10 +15,18 @@ def write_images(subreddit, image_dict):
         print(value)
         url = value[0]
         title = value[1]
-        image = requests.get(url)
-        with open(f"{directory}/{submission_id}", 'wb') as f:
-            f.write(image.content)
-            static_path = "/".join(str(f.name).split("/")[2:])
-            image_list.append(f"{static_path}|{title}")
+        req = requests.get(url)
+        im_downsized = downsize(req)
+
+        filepath = f"{directory}/{submission_id}"
+        im_downsized.save(filepath + ".jpg")
+        static_path = "/".join(filepath.split("/")[2:])
+        image_list.append(f"{static_path}|{title}")
 
     return image_list
+
+
+def downsize(req):
+    image = Image.open(BytesIO(req.content))
+    image = image.convert('RGB')
+    return image.resize((400, 400))

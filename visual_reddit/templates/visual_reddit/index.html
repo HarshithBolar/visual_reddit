@@ -13,7 +13,7 @@
         {% for key, value in image_dict.items %}
             {% if '/images/' in value.0 %}
                 <a href="https://reddit.com/{{ key }}">
-                    <img border="0" alt="visual-reddit" src="{% static ''|add:value.0|add:'' %}" width="300" height="300" title="{{ value.1 }}">
+                    <img border="0" alt="visual-reddit" src="{% static ''|add:value.0|add:'.jpg' %}" width="300" height="300" title="{{ value.1 }}">
                 </a>
             {% else %}
                 <a href="https://reddit.com/{{ key }}">
