@@ -3,25 +3,12 @@ from django.template import loader
 from rq import Queue
 from .api import reddit_api
 from .api import redis_api
-from .api import image_api
 import shutil
 import os
 
 reddit_api = reddit_api.MyReddit()
 redis_api = redis_api.MyRedis()
 task_queue = Queue(connection=redis_api.db)
-
-def cache_images(subreddit, image_dict):
-    image_list = image_api.write_images(subreddit, image_dict)
-    redis_api.store(subreddit, str(image_list), 600)
-
-def fetch_images_from_cache(cached_images):
-    cached_image_dict = {}
-    for entry in cached_images:
-        path, title = entry.split("|")
-        submission_id = path.split("/")[-1]
-        cached_image_dict[submission_id] = (path, title)
-    return cached_image_dict
 
 def search(request):
     keyword = request.GET.get('keyword')
@@ -39,7 +26,7 @@ def index(request, subreddit='all'):
 
     if cached_images is not None:
         print(cached_images)
-        cached_image_dict = fetch_images_from_cache(eval(cached_images))
+        cached_image_dict = redis_api.fetch_images_from_cache(eval(cached_images))
         print(cached_image_dict)
         context = {
             'image_dict': cached_image_dict
@@ -50,7 +37,7 @@ def index(request, subreddit='all'):
             static_path = f"visual_reddit/static/visual_reddit/images/{subreddit}/"
             if os.path.exists(static_path):
                 shutil.rmtree(static_path)
-            task_queue.enqueue(cache_images, subreddit, image_dict, job_id=subreddit)
+            task_queue.enqueue(redis_api.cache_images, subreddit, image_dict, job_id=subreddit)
 
         context = {
             'image_dict': image_dict
