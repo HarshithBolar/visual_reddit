@@ -34,24 +34,24 @@ Installation
    ```
 4. Create an API token and secret key for your app on Reddit. Create a `praw.ini` file in the top level directory with this information - [help](https://praw.readthedocs.io/en/latest/getting_started/configuration/prawini.html#defining-additional-sites). Give it the name `visual-reddit`.
 5. Install Redis.
-```
-wget http://download.redis.io/releases/redis-5.0.7.tar.gz
-tar xzf redis-5.0.7.tar.gz
-cd redis-5.0.7
-make
-```
+   ```
+   wget http://download.redis.io/releases/redis-5.0.7.tar.gz
+   tar xzf redis-5.0.7.tar.gz
+   cd redis-5.0.7
+   make
+   ```
 6. Start `redis-server`. It runs on port 6379 by default.
-```
-redis-5.0.7/src/redis-server
-```
+   ```
+   redis-5.0.7/src/redis-server
+   ```
 7. Start `rq` worker from the top level directory.
-```
-venv/bin/rq worker
-```
+   ```
+   venv/bin/rq worker
+   ```
 8. Start Django development server. Visual Reddit should be accessible on port 8000.
-```
-python manage.py runserver
-```
+   ```
+   python manage.py runserver
+   ```
 
 License
 -------
