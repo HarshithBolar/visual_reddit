@@ -8,7 +8,7 @@
 
 Visual Reddit fetches images from Reddit and displays them in a grid like format stripping off all the additional noise. Clicking on the image will take you to the corresponding Reddit post. The first screenshot shows images from the subreddit [/r/Wallpapers](https://www.reddit.com/r/wallpapers/) and the second image a search result for the keyword 'sunset'.
 
-Visual Reddit is written in Python and uses [Django](https://www.djangoproject.com/) as the backend. It uses [Redis](https://redis.io/) for caching images/image links, [Redis Queues](https://python-rq.org/) for running background tasks and [Pillow](https://pillow.readthedocs.io/en/stable/) for server side resizing.
+Visual Reddit is written in Python and uses [Django](https://www.djangoproject.com/) as the backend. It uses [PRAW](https://github.com/praw-dev/praw) for communicating with Reddit, [Redis](https://redis.io/) for caching images/image links, [Redis Queues](https://python-rq.org/) for running background tasks and [Pillow](https://pillow.readthedocs.io/en/stable/) for server side resizing.
 
 Installation
 ------------
