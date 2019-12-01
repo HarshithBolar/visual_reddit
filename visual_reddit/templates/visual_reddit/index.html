@@ -3,10 +3,13 @@
     <link rel="stylesheet" href="{% static "visual_reddit/grid.css" %}">
 </head>
 
-<form method="get" action="/search">
-    <input id="keyword" type="text" name="keyword">
-    <button id="search_submit" type="submit">Submit</button>
-</form>
+<div class="topbar">
+    <h1> Visual Reddit </h1>
+    <form method="get" action="/search" class="search-form">
+        <input id="keyword" type="text" name="keyword" placeholder="Search..">
+    </form>
+</div>
+
 
 {% if image_dict %}
     <div class="image_grid">
