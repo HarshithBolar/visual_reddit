@@ -1,4 +1,4 @@
-# Visual Reddit 
+# Visual Reddit [![Build Status](https://travis-ci.org/HarshithBolar/visual_reddit.svg?branch=master)](https://travis-ci.org/HarshithBolar/visual_reddit)
 
 #### An image feed for Reddit with subreddit and keyword based search
 
