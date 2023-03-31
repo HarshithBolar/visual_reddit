@@ -1,6 +1,6 @@
 Django==2.2.21
 Pillow==8.2.0
 praw==6.4.0
-redis==3.3.11
+redis==4.4.4
 requests==2.22.0
 rq==1.1.0
